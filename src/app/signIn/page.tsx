@@ -1,5 +1,7 @@
 import React from 'react'
 import { signIn } from '../actions/auth';
+import { sendOtp } from '../actions/auth';
+import Link from 'next/link';
 
 function SignIn() {
   return (
@@ -8,6 +10,8 @@ function SignIn() {
             <form action={signIn} className='flex flex-col gap-4 w-64'>
                 <input type="text" name='email' placeholder='Email' required />
                 <input type="password" name='password' placeholder='Passowrd' required />
+                {/* <Link href={"/forget-passoword"}>Forgot passowrd?</Link> */}
+                <button formAction={sendOtp}>Forgot password?</button>
                 <button type='submit'>Sign Up</button>
             </form>
         </div>
