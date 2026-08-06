@@ -13,11 +13,11 @@ export const signUpValidation = z.object({
 })
 
 export const sigInValidation = z.object({
-    username:z.string(),
-    email:z.email()
+    email:z.email(),
+    password:z.string().min(6,"Passoword should be atleast 6 characters")
 })
 
-export const verifyCodeValidation = z.string().length(6,"Code must be 6 characters");
+export const verifyCodeValidation = z.string().length(6,"Code must be 6 characters").regex(/^\d+$/, "OTP must contain only digits");
 
 export const acceptMessageValidation = z.boolean();
 

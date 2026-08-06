@@ -1,5 +1,5 @@
 import React from 'react'
-import { checkValidOTP } from '../actions/auth';
+import { checkValidOTP } from '../../actions/auth';
 
 function CheckOtp() {
   return (

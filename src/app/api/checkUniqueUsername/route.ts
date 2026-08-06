@@ -3,6 +3,8 @@ import {success, z} from "zod";
 import { usernameValidation } from "@/schemas/inputValidation.schema";
 import { NextResponse } from "next/server";
 import { username } from "better-auth/plugins";
+import zodResolver from 'zod'
+
 
 
 const usernameQuerySchema = z.object({
@@ -32,7 +34,7 @@ export async function GET(request:Request) {
 
         const usersCollection = db.collection("user"); // Better Auth's default collection name
 
-        const user = await usersCollection.findOne({name:username,emailVerified:true });
+        const user = await usersCollection.findOne({name:username});
 
         if(user){
             return NextResponse.json({

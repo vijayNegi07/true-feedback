@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { resetPassword } from '../actions/auth';
+import { resetPassword } from '../../actions/auth';
 
 import { authClient } from '@/lib/auth-client';
 

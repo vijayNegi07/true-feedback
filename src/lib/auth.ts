@@ -12,6 +12,11 @@ export const auth = betterAuth({
     emailAndPassword:{
         enabled:true
     },
+    user: {
+        deleteUser: { 
+            enabled: true
+        } 
+    },
     plugins:[
        
         emailOTP({
@@ -19,7 +24,7 @@ export const auth = betterAuth({
                 if (type === "sign-in") { 
                     // Send the OTP for sign in
                 } else if (type === "email-verification") { 
-                    // Send the OTP for email verification
+                    sendVerificationEmail(email, "vijay", otp)
                 } else { 
                     sendVerificationEmail(email, "vijay", otp)
                 } 
