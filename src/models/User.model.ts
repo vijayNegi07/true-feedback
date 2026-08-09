@@ -3,14 +3,19 @@ import { string } from "zod";
 import { tr } from "zod/locales";
 
 export interface Message extends Document{
-    content:string,
+    title:string,
+    description:string,
     createdAt:Date,
 }
 
+
 const MessageSchema: Schema<Message> = new Schema({
-    content:{
+    title:{
         type:String,
         required:true
+    },
+    description:{
+        type:String,
     },
     createdAt:{
         type:Date,

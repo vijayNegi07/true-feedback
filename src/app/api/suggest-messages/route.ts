@@ -25,11 +25,13 @@ export async function POST(req: Request) {
     console.log(fullText);
 
     // Meanwhile, return the stream to the client
-    return createUIMessageStreamResponse({
-        stream: toUIMessageStream({
-            stream: result.stream,
-        }),
-    });
+    // return createUIMessageStreamResponse({
+    //     stream: toUIMessageStream({
+    //         stream: result.stream,
+    //     }),
+    // });
+
+     return result.toTextStreamResponse();
  } catch (error) {
     console.log("Some error while using ai ", error);
  }

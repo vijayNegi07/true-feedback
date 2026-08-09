@@ -8,11 +8,16 @@ export async function POST(request: Request) {
     connectDB();
    
     try {
-        const{username, content} = await request.json();
-
+        console.log("here at post");
+        
+        const{username, title, body} = await request.json();
+        console.log(username, title, body);
+        
         const user = await UserModel.findOne(username);
 
         if(!user){
+            console.log("User not found");
+            
             return NextResponse.json({
             success:false,
             message:"User not found",
@@ -26,7 +31,7 @@ export async function POST(request: Request) {
         },{status:404});
         }
 
-        const message = {content, createdAt: new Date()}
+        const message = {title,description:body, createdAt: new Date()}
 
         user.message.push(message as Message);
         await user.save();
