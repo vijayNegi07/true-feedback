@@ -23,7 +23,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 
-const page = () => {
+const VerifyForm = () => {
   const [digits, setDigits] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -92,8 +92,7 @@ const page = () => {
   
 
   return (
-    <Suspense  fallback={<div>Loading...</div>}>
-      <div
+    <div
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -394,8 +393,14 @@ const page = () => {
         .spin { animation: spin 0.8s linear infinite }
       `}</style>
     </div>
-    </Suspense>
   );
 };
 
-export default page;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyForm />
+    </Suspense>
+  );
+}
