@@ -61,7 +61,7 @@ function SignIn() {
         email: formData.email, // required
         password: formData.password, // required
         rememberMe: true,
-        callbackURL: "/",
+        callbackURL: "/dashboard",
       });
 
       if (error) {

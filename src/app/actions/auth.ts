@@ -64,7 +64,7 @@ export async function signIn(formData: FormData) {
   redirect("/");
 }
 
-export async function signOut(formData: FormData) {
+export async function signOut() {
   const user = await auth.api.signOut({
     headers: await headers(),
   });

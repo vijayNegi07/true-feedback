@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { authClient } from '@/lib/auth-client'
 import { User } from 'better-auth'
+import { Button } from './ui/button'
+import { signOut } from '@/app/actions/auth'
 
 export default function Navbar() {
   const pathname  = usePathname()
@@ -74,14 +76,16 @@ export default function Navbar() {
             Sign up
           </Link>
             </>
-          ):(<Link href="/" style={{
+          ):(<Button
+          onClick={signOut}
+          style={{
             padding: '6px 14px', borderRadius: 8, fontSize: 13.5, fontWeight: 500,
             color: '#fff', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
             boxShadow: '0 1px 3px rgba(99,102,241,0.4)',
             transition: 'all 0.15s',
-          }}>
-            Log Out
-          </Link>)}
+          }}
+          
+          >Log Out</Button>)}
         </div>
 
         <button onClick={() => setOpen(!open)} style={{ display: 'none', padding: 6, background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }} className="show-mobile">
