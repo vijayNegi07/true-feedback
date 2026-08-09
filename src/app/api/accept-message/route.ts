@@ -23,9 +23,11 @@ export async function POST(request: Request) {
     try {
          const userId = new mongoose.Types.ObjectId(session?.user.id);
 
-        const {acceptingMessageStatus} = await request.json();
+        const {acceptMessage} = await request.json();
 
-        const firstUser = await UserModel.findOneAndUpdate({userId},{isAcceptingMessage:acceptingMessageStatus},
+        
+
+        const firstUser = await UserModel.findOneAndUpdate({userId},{isAcceptingMessage:acceptMessage},
             {new:true})
 
         // const user = await UserModel.findByIdAndUpdate({userId}, 

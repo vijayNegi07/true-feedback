@@ -147,8 +147,7 @@ export default function FeedbackFeed() {
       const response = await axios.post<ApiResponse>("/api/accept-message", {
         acceptMessage: !acceptMessage,
       });
-      console.log(response.data);
-
+  
       if (!response.data.success) {
         toast.add({
           type: "error",
@@ -157,6 +156,7 @@ export default function FeedbackFeed() {
         return;
       }
 
+      
       setValue("acceptMessage", !acceptMessage);
     } catch (error) {
       console.log(
@@ -426,7 +426,7 @@ export default function FeedbackFeed() {
             >
               <Switch
                 {...register("acceptMessages")}
-                checked={acceptMessage ?? true}
+                checked={acceptMessage ?? false}
                 onCheckedChange={handleSwitchChange}
                 disabled={isSwitchLoading}
               ></Switch>
