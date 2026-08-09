@@ -29,9 +29,9 @@ export const auth = betterAuth({
                 if (type === "sign-in") { 
                     // Send the OTP for sign in
                 } else if (type === "email-verification") { 
-                    sendVerificationEmail(email, "vijay", otp)
+                    await sendVerificationEmail(email, "vijay", otp)
                 } else { 
-                    sendVerificationEmail(email, "vijay", otp)
+                    await sendVerificationEmail(email, "vijay", otp)
                 } 
             }
         }),

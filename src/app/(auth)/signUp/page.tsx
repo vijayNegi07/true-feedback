@@ -124,17 +124,13 @@ function SignUpPage() {
       toast.add({
         type: "success",
         description: "User Creation Success! Verification Code sent to email",
-      });
-
-      console.log(email);
-      
+      });      
 
       const { data, error } = await authClient.emailOtp.sendVerificationOtp({
         email: formData.email, // required
         type: "email-verification", // required
       });
 
-      console.log("OTP sent data-> ", data);
 
       if (!data?.success) {
         toast.add({
@@ -164,7 +160,7 @@ function SignUpPage() {
           : 3;
   const strengthLabel = ["", "Weak", "Fair", "Strong"];
   const strengthColor = ["", "#ef4444", "#f59e0b", "#10b981"];
-  console.log(form.control._formValues);
+
   
 
   return (

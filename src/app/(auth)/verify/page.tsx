@@ -35,6 +35,7 @@ const VerifyForm = () => {
   const searchParams = useSearchParams();
   const email = searchParams.get("email") as string;
 
+
   const verifySchema = z.object({
     code: verifyCodeValidation,
   });
@@ -53,7 +54,6 @@ const VerifyForm = () => {
         otp: formData.code, // required
       });
 
-      console.log(response);
       if (!response.data) {
         toast.add({
           type: "Error",
@@ -66,6 +66,8 @@ const VerifyForm = () => {
         type: "Success",
         description: "Email is Verified",
       });
+
+      router.push("/dashboard")
 
     } catch (error) {
       console.log("There is some error while verifying user email", error);
@@ -88,8 +90,6 @@ const VerifyForm = () => {
     setTimeout(() => setResent(false), 3000);
   };
 
-  console.log(form.formState.errors);
-  
 
   return (
     <div
