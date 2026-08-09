@@ -16,7 +16,7 @@ export async function proxy(request: NextRequest) {
   // Authenticated users shouldn't see auth pages
   if (
     isAuthenticated &&
-    (pathname === "/signUp" || pathname === "/sigIn" || pathname === "/verify" || pathname === "/checkOtp")
+    (pathname === "/signUp" || pathname === "/sigIn" )
   ) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
@@ -33,7 +33,6 @@ export const config = {
   matcher: ["/signUp",
             "/signIn",
             "/dashboard",
-            "/verify",
-            "/checkOtp"
+
   ],
 }
