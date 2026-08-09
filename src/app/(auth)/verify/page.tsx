@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import { toast } from "@/components/ui/toast";
@@ -17,14 +17,6 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-
 import {
   InputOTP,
   InputOTPGroup,
@@ -55,8 +47,6 @@ const page = () => {
   });
 
   const onSubmit = async (formData: z.infer<typeof verifySchema>) => {
-    console.log("submitting");
-    console.log(form.getValues("code"));
     try {
       const response = await authClient.emailOtp.verifyEmail({
         email: email, // required
@@ -102,7 +92,8 @@ const page = () => {
   
 
   return (
-    <div
+    <Suspense  fallback={<div>Loading...</div>}>
+      <div
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -403,6 +394,7 @@ const page = () => {
         .spin { animation: spin 0.8s linear infinite }
       `}</style>
     </div>
+    </Suspense>
   );
 };
 

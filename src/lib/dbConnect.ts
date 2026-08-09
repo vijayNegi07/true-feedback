@@ -1,8 +1,8 @@
 
 import mongoose, { Mongoose } from "mongoose";
 
-import dns from 'dns';
-dns.setServers(['8.8.8.8', '1.1.1.1']);
+// import dns from 'dns';
+// dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 const globalWithMongoose = global as typeof global & {
   mongoose?: {
@@ -21,8 +21,7 @@ export async function connectDB(): Promise<Mongoose> {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    dns.setServers(['8.8.8.8', '1.1.1.1'])
-    console.log(process.env.MONGODB_URI);
+
     
     cached.promise = mongoose.connect(process.env.URI || "")
     .then((mongoose)=>{console.log("Database connected successfully");
