@@ -126,6 +126,9 @@ function SignUpPage() {
         description: "User Creation Success! Verification Code sent to email",
       });
 
+      console.log(email);
+      
+
       const { data, error } = await authClient.emailOtp.sendVerificationOtp({
         email: formData.email, // required
         type: "email-verification", // required

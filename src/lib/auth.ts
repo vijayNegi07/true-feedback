@@ -17,6 +17,11 @@ export const auth = betterAuth({
             enabled: true
         } 
     },
+    baseURL: process.env.BETTER_AUTH_URL,
+    trustedOrigins: [
+        "https://true-feedback-dubt.vercel.app",
+        "http://localhost:3000", // keep local dev working too
+    ],
     plugins:[
        
         emailOTP({
